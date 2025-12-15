@@ -47,7 +47,7 @@ export default function Navbar() {
             <li><Link to="/espacos">Espaços</Link></li>
             <li><Link to="/agenda">Agenda</Link></li>
             <li><Link to="/dashboard">Dashboard</Link></li>
-            <li><Link to="/login">Entrar</Link></li>
+            <li><Link to="/dashboard-admin">Entrar</Link></li>
           </ul>
         )}
       </div>
