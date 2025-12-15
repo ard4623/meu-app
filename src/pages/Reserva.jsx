@@ -18,7 +18,7 @@ export default function Reserva() {
   const [form, setForm] = useState({
     titulo: "",
     email: "",
-    telefone: "",
+    telefone: "", // <-- novo campo
     data: "",
     inicio: "",
     fim: "",
@@ -33,7 +33,6 @@ export default function Reserva() {
   useEffect(() => {
     if (!form.data) return;
 
-    // Buscar do backend (se existir)
     axios
       .get("http://localhost:5000/reservas", {
         params: {
@@ -43,11 +42,6 @@ export default function Reserva() {
       })
       .then(res => setReservasDoDia(res.data))
       .catch(() => setReservasDoDia([]));
-
-    // Buscar do LocalStorage
-    const reservasLocal = JSON.parse(localStorage.getItem("reservas")) || [];
-    const filtradas = reservasLocal.filter(r => r.espaco === id && r.data === form.data);
-    setReservasDoDia(prev => [...prev, ...filtradas]);
   }, [form.data, id]);
 
   // ===================== CÁLCULO DE HORAS E TOTAL =====================
@@ -111,27 +105,15 @@ export default function Reserva() {
       titulo: form.titulo,
       espaco: id,
       email: form.email,
-      telefone: form.telefone,
+      telefone: form.telefone, // <-- incluído no envio
       data: form.data,
       hora: `${form.inicio} - ${form.fim}`,
       participantes: form.participantes,
       status: "Pendente"
     };
 
-    // ======= 1. Salvar no LocalStorage =======
-    const reservasLocal = JSON.parse(localStorage.getItem("reservas")) || [];
-    reservasLocal.push(novaReserva);
-    localStorage.setItem("reservas", JSON.stringify(reservasLocal));
-
-    // ======= 2. Salvar no backend (opcional) =======
-    try {
-      await axios.post("http://localhost:5000/reservas", novaReserva);
-    } catch (err) {
-      console.warn("Não foi possível salvar no backend, mas LocalStorage foi salvo.");
-    }
-
-    alert("Reserva confirmada!");
-    navigate("/minhas-reservas");
+    await axios.post("http://localhost:5000/reservas", novaReserva);
+    navigate("/agenda");
   }
 
   // ===================== UI =====================
@@ -141,7 +123,9 @@ export default function Reserva() {
         onSubmit={handleSubmit}
         className="w-full max-w-lg bg-white rounded-xl shadow-lg p-6 space-y-4"
       >
-        <h2 className="text-2xl font-bold text-center">Reserva – {id}</h2>
+        <h2 className="text-2xl font-bold text-center">
+          Reserva – {id}
+        </h2>
 
         <div>
           <label className="block text-sm font-medium">Título</label>
@@ -174,11 +158,18 @@ export default function Reserva() {
             placeholder="(99) 99999-9999"
             value={form.telefone}
             onChange={e => {
-              let v = e.target.value.replace(/\D/g, "").slice(0, 11);
-              if (v.length >= 2) v = v.replace(/^(\d{2})(\d)/, "($1) $2");
-              if (v.length >= 7) v = v.replace(/(\d{5})(\d)/, "$1-$2");
-              setForm({ ...form, telefone: v });
-            }}
+  let v = e.target.value.replace(/\D/g, "").slice(0, 11); // limita a 11 dígitos
+
+  if (v.length >= 2) {
+    v = v.replace(/^(\d{2})(\d)/, "($1) $2");
+  }
+
+  if (v.length >= 7) {
+    v = v.replace(/(\d{5})(\d)/, "$1-$2");
+  }
+
+  setForm({ ...form, telefone: v });
+}}
             required
           />
         </div>
@@ -226,7 +217,9 @@ export default function Reserva() {
             min="1"
             className="w-full border rounded px-3 py-2"
             value={form.participantes}
-            onChange={e => setForm({ ...form, participantes: e.target.value })}
+            onChange={e =>
+              setForm({ ...form, participantes: e.target.value })
+            }
           />
         </div>
 
@@ -234,8 +227,8 @@ export default function Reserva() {
         {reservasDoDia.length > 0 && (
           <div className="bg-yellow-50 border border-yellow-200 rounded p-3 text-sm">
             <p className="font-semibold mb-1">Horários já reservados:</p>
-            {reservasDoDia.map((r, idx) => (
-              <p key={idx}>• {r.hora}</p>
+            {reservasDoDia.map(r => (
+              <p key={r._id}>• {r.hora}</p>
             ))}
           </div>
         )}
@@ -244,7 +237,9 @@ export default function Reserva() {
         <div className="bg-gray-50 p-4 rounded space-y-1 text-sm">
           <p><strong>Preço por hora:</strong> R$ {precoHora},00</p>
           <p><strong>Duração:</strong> {horas} h</p>
-          <p className="text-lg font-bold text-green-600">Total: R$ {total.toFixed(2)}</p>
+          <p className="text-lg font-bold text-green-600">
+            Total: R$ {total.toFixed(2)}
+          </p>
         </div>
 
         <button
