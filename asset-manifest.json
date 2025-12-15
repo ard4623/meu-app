@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/meu-app/static/css/main.99b1e8ea.css",
+    "main.js": "/meu-app/static/js/main.88ab281e.js",
+    "static/media/fundo.jpg": "/meu-app/static/media/fundo.b4fe03c1360be07d572f.jpg",
+    "static/media/coworking.jpg": "/meu-app/static/media/coworking.849946ce12cf8540a497.jpg",
+    "static/media/auditorio.jpg": "/meu-app/static/media/auditorio.013eee153c13477604f8.jpg",
+    "static/media/laboratorio.jpg": "/meu-app/static/media/laboratorio.d69bcda25c8424f34afe.jpg",
+    "static/media/sala-reuniao.jpg": "/meu-app/static/media/sala-reuniao.b54eb6a31aa45d6806f5.jpg",
+    "index.html": "/meu-app/index.html",
+    "main.99b1e8ea.css.map": "/meu-app/static/css/main.99b1e8ea.css.map",
+    "main.88ab281e.js.map": "/meu-app/static/js/main.88ab281e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.99b1e8ea.css",
+    "static/js/main.88ab281e.js"
+  ]
+}
