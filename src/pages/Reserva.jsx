@@ -34,7 +34,7 @@ export default function Reserva() {
     if (!form.data) return;
 
     axios
-      .get("http://localhost:5000/reservas", {
+      .get("https://meu-app-6u9s.onrender.com/reservas", {
         params: {
           espaco: id,
           data: form.data
