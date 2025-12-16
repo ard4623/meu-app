@@ -17,7 +17,7 @@ export default function Agenda() {
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:5000/reservas?admin=true&password=aa7e04xrymTZW91e9fa73d7bf11@@D")
+    fetch("https://meu-app-6u9s.onrender.com/reservas?admin=true&password=aa7e04xrymTZW91e9fa73d7bf11@@D")
       .then(res => res.json())
       .then(data => {
         const eventos = data.map(r => {
