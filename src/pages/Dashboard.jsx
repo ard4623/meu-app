@@ -49,7 +49,7 @@ export default function DashboardAdmin() {
     const fetchReservas = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/reservas?admin=true&password=aa7e04xrymTZW91e9fa73d7bf11@@D"
+          "https://meu-app-6u9s.onrender.com/reservas?admin=true&password=aa7e04xrymTZW91e9fa73d7bf11@@D"
         );
         setReservas(response.data);
       } catch (error) {
@@ -62,7 +62,7 @@ export default function DashboardAdmin() {
   // Ações de atualizar status
   const confirmarReserva = async id => {
     await axios.put(
-      `http://localhost:5000/reservas/${id}?password=aa7e04xrymTZW91e9fa73d7bf11@@D`,
+      `https://meu-app-6u9s.onrender.com/reservas/${id}?password=aa7e04xrymTZW91e9fa73d7bf11@@D`,
       { status: "Confirmada" }
     );
     setReservas(prev =>
@@ -72,7 +72,7 @@ export default function DashboardAdmin() {
 
   const cancelarReserva = async id => {
     await axios.put(
-      `http://localhost:5000/reservas/${id}?password=aa7e04xrymTZW91e9fa73d7bf11@@D`,
+      `https://meu-app-6u9s.onrender.com/reservas/${id}?password=aa7e04xrymTZW91e9fa73d7bf11@@D`,
       { status: "Cancelada" }
     );
     setReservas(prev =>
@@ -82,7 +82,7 @@ export default function DashboardAdmin() {
 
   const excluirReserva = async id => {
     await axios.delete(
-      `http://localhost:5000/reservas/${id}?password=aa7e04xrymTZW91e9fa73d7bf11@@D`
+      `https://meu-app-6u9s.onrender.com/reservas/${id}?password=aa7e04xrymTZW91e9fa73d7bf11@@D`
     );
     setReservas(prev => prev.filter(r => r._id !== id));
   };
