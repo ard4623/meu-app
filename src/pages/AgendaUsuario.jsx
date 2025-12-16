@@ -35,7 +35,7 @@ export default function AgendaUsuario({ email }) {
   useEffect(() => {
     const fetchReservas = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/reservas?email=${email}`);
+        const res = await axios.get(`https://meu-app-6u9s.onrender.com/reservas?email=${email}`);
         setReservas(res.data);
       } catch (error) {
         console.error("Erro ao buscar reservas:", error);
