@@ -14,7 +14,7 @@ export default function AdminLogin() {
     setLoading(true);
 
     try {
-      await axios.get("http://localhost:5000/reservas", {
+      await axios.get("https://meu-app-6u9s.onrender.com/reservas", {
         params: {
           admin: true,
           password: password
