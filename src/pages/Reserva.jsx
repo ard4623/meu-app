@@ -112,7 +112,7 @@ export default function Reserva() {
       status: "Pendente"
     };
 
-    await axios.post("http://localhost:5000/reservas", novaReserva);
+    await axios.post("https://meu-app-6u9s.onrender.com/reservas", novaReserva);
     navigate("/agenda");
   }
 
