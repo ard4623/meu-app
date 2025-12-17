@@ -1,70 +1,95 @@
-# Getting Started with Create React App
+# SpaceHub – Sistema de Reserva de Salas
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+O **SpaceHub** é um site de reserva de salas desenvolvido para facilitar o agendamento e a gestão de espaços de forma simples e eficiente.
 
-## Available Scripts
+O projeto utiliza um **frontend em React** e um **servidor em JavaScript** que atua como **API**, responsável pela comunicação com o banco de dados **MongoDB**.
 
-In the project directory, you can run:
+---
+
+## Visão Geral da Arquitetura
+
+- **Frontend**: React  
+- **Backend / API**: JavaScript (Node.js)  
+- **Banco de Dados**: MongoDB  
+- **Comunicação**: API REST entre frontend e backend  
+
+O frontend consome a API para realizar operações como:
+- Criar reservas
+- Consultar disponibilidade de salas
+- Listar e gerenciar reservas
+
+---
+
+## Funcionalidades
+
+- Reserva de salas
+- Consulta de disponibilidade
+- Integração com banco de dados MongoDB
+- Comunicação segura via API
+
+---
+
+## Scripts Disponíveis
+
+No diretório do projeto, você pode executar:
 
 ### `yarn start`
+Executa o aplicativo em modo de desenvolvimento.  
+Abra [http://localhost:3000](http://localhost:3000) para visualizar no navegador.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+A página será recarregada automaticamente quando houver alterações no código.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
 ### `yarn test`
+Inicia o executor de testes em modo interativo.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
 ### `yarn build`
+Cria a versão de produção do aplicativo na pasta `build`.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Código otimizado para melhor desempenho
+- Arquivos minificados
+- Pronto para deploy
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
 ### `yarn eject`
+**Atenção:** Esta é uma operação sem volta.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Remove a abstração do Create React App e copia todas as configurações (Webpack, Babel, ESLint, etc.) para o projeto, permitindo total controle da configuração.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## API e Banco de Dados
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+O backend foi desenvolvido em **JavaScript** e funciona como uma **API REST**, sendo responsável por:
 
-## Learn More
+- Receber requisições do frontend
+- Processar regras de negócio
+- Comunicar-se com o banco de dados **MongoDB**
+- Retornar dados de reservas e salas
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Tecnologias Utilizadas
 
-### Code Splitting
+- React
+- JavaScript (Node.js)
+- MongoDB
+- Yarn
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+## Deploy
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Após executar `yarn build`, o projeto estará pronto para ser publicado em qualquer serviço de hospedagem compatível com aplicações React.
 
-### Making a Progressive Web App
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Mais Informações
 
-### Advanced Configuration
+- Documentação do React: https://reactjs.org/
+- Documentação do Create React App: https://create-react-app.dev/
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
